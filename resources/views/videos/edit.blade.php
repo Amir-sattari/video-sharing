@@ -18,11 +18,7 @@
                             <input type="text" name="name" class="form-control" value="{{ old('name',$video->name) }}" placeholder="عنوان">
                         </div>
                         <div class="col-md-6">
-                            <label>دسته بندی</label>
-                            <input type="text" name="category" class="form-control" value="{{ old('category',$video->category) }}" placeholder="دسته بندی">
-                        </div>
-                        <div class="col-md-6">
-                            <label>برچسب ها</label>
+                            <label>برچسب</label>
                             <input type="text" name="slug" class="form-control" value="{{ old('slug',$video->slug) }}" placeholder="برچسب ها">
                         </div>
                         <div class="col-md-6">
@@ -30,16 +26,24 @@
                             <input type="text" name="length" class="form-control" value="{{ old('length',$video->length) }}" placeholder="مدن زمان">
                         </div>
                         <div class="col-md-6">
+                            <label>دسته بندی</label>
+                            <select class="form-control" name="category_id">
+                                @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == $video->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>تصویر</label>
+                            <input id="featured_image" name="thumbnail" type="file" class="form-control" value="{{ $video->thumbnail }}">
+                        </div>
+                        <div class="col-md-6">
                             <label>آپلود فیلم</label>
-                            <input id="upload_file" name="url" type="file" class="file" value="{{ $video->url }}">
+                            <input id="upload_file" name="url" type="file" class="form-control" value="{{ $video->url }}">
                         </div>
                         <div class="col-md-12">
                             <label>توضیحات</label>
                             <textarea class="form-control" name="description" rows="4" placeholder="توضیح">{{ old('description',$video->description) }}</textarea>
-                        </div>
-                        <div class="col-md-6">
-                            <label>تصویر</label>
-                            <input id="featured_image" name="thumbnail" type="file" class="file" value="{{ $video->thumbnail }}">
                         </div>
                         <div class="col-md-6">
                             <button type="submit" id="contact_submit" class="btn btn-dm">ذخیره</button>

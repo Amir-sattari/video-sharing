@@ -24,7 +24,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:128',
-            'category' => 'required',
+            'category_id' => 'required|exists:categories,id',
             'slug' => 'required|unique:videos,slug|alpha_dash:ascii',
             'url' => 'required|',
             'description' => 'nullable|min:10',

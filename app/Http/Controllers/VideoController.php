@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use App\Utilities\ImageUploader;
 use App\Http\Requests\Video\StoreRequest;
 use App\Http\Requests\Video\UpdateRequest;
+use App\Models\Category;
 
 class VideoController extends Controller
 {
     public function create()
     {
-        return view('videos.create');
+        $categories = Category::all();
+        return view('videos.create',compact('categories'));
     }
 
     public function store(StoreRequest $request)
@@ -22,7 +24,7 @@ class VideoController extends Controller
 
             $createdVideo = Video::create([
                 'name' => $validatedData['name'],
-                'category' => $validatedData['category'],
+                'category_id' => $validatedData['category_id'],
                 'slug' => $validatedData['slug'],
                 'url' => $validatedData['url'],
                 'description' => $validatedData['description'],
@@ -50,7 +52,8 @@ class VideoController extends Controller
 
     public function edit(Video $video)
     {
-        return view('videos.edit',compact('video'));
+        $categories = Category::all();
+        return view('videos.edit',compact('video','categories'));
     }
 
     public function update(UpdateRequest $request, Video $video)
@@ -60,7 +63,7 @@ class VideoController extends Controller
 
             $updatedVideo = $video->updated([
                 'name' => $validatedData['name'],
-                'category' => $validatedData['category'],
+                'category_id' => $validatedData['category_id'],
                 'slug' => $validatedData['slug'],
                 'length' => $validatedData['length'],
                 'url' => $validatedData['url'],

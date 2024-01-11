@@ -5,7 +5,7 @@
 <h1 class="new-video-title"><i class="fa fa-bolt"></i>آخرین ویدیو ها</h1>
 <div class="row">
 
-    @foreach($mostPopularVideos as $video)
+    @foreach($latestVideos as $video)
         <x-video-box :video="$video"></x-video-box>
     @endforeach
 </div>
