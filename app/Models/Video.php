@@ -38,7 +38,7 @@ class Video extends Model
 
     public function relatedVideos(int $count = 8)
     {
-        return $this->category->getRandomVideos($count);
+        return $this->category->getRandomVideos($count,$this->id);
     }
 
     public function category()
