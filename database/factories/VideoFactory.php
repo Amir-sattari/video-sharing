@@ -24,7 +24,7 @@ class VideoFactory extends Factory
             'length' => $this->faker->randomNumber(3),
             'description' => $this->faker->text(),
             'thumbnail' => 'https://loremflickr.com/446/240/world?random=' . rand(1,99),
-            'category_id' => Category::first() ?? Category::factory(),
+            'category_id' => rand(1,7) ?? Category::factory(),
         ];
     }
 }
