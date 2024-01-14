@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Video;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Utilities\ImageUploader;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Video\StoreRequest;
 use App\Http\Requests\Video\UpdateRequest;
-use App\Models\Category;
 
 class VideoController extends Controller
 {
@@ -22,7 +23,7 @@ class VideoController extends Controller
         try {
             $validatedData = $request->validated();
 
-            $createdVideo = Video::create([
+            $createdVideo = $request->user()->videos()->create([
                 'name' => $validatedData['name'],
                 'category_id' => $validatedData['category_id'],
                 'slug' => $validatedData['slug'],

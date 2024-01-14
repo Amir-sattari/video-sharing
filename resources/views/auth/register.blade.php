@@ -51,7 +51,7 @@
 
             <div class="or"></div>
 
-            <p>شما یک حساب کاربری دارید؟ <a href="{{ route('login.create') }}"> ورود!</a> </p>
+            <p>حساب کاربری دارید؟<a href="{{ route('login.create') }}">ورود!</a> </p>
         </form>
     </div>
 </div>

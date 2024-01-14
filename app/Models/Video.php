@@ -21,10 +21,29 @@ class Video extends Model
         'length',
     ];
 
+    # Relationships
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
     }
+
+    public function relatedVideos(int $count = 8)
+    {
+        return $this->category->getRandomVideos($count,$this->id);
+    }
+
+    # Accessors
 
     public function getLengthForHumanAttribute()
     {
@@ -36,18 +55,18 @@ class Video extends Model
         return (new Verta($value))->formatDifference();
     }
 
-    public function relatedVideos(int $count = 8)
-    {
-        return $this->category->getRandomVideos($count,$this->id);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
     public function getCategoryNameAttribute()
     {
         return $this->category?->name;
+    }
+
+    public function getOwnerNameAttribute()
+    {
+        return $this->user?->name;
+    }
+
+    public function getOwnerAvatarAttribute()
+    {
+        return $this->user?->gravatar;
     }
 }
