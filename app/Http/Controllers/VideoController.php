@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CheckVerifyEmail;
 use App\Models\Video;
 use App\Models\Category;
 use Illuminate\Http\Request;

@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
         $categories = [
             'ورزشی' => [
                 'slug' => 'sport',
-                'icon' => 'fa fa-futbal-o',
+                'icon' => 'fa fa-futbol-o',
             ],
             'بازی' => [
                 'slug' => 'game',

@@ -1,15 +1,20 @@
 <?php
 
+use App\Events\VideoCreated;
+use App\Jobs\OTP;
 use App\Models\User;
 use App\Mail\VerifyEmail;
+use App\Jobs\ProcessVideo;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryVideoController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
+use App\Http\Middleware\CheckVerifyEmail;
+use App\Models\Video;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +55,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Route::get('event',function(){
+//     $video = Video::first();
+//     VideoCreated::dispatch($video);
+// });

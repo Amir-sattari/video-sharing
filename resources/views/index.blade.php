@@ -1,7 +1,7 @@
 @extends('videos.layout')
 
 @section('content')
-
+@include('errors.message')
 <h1 class="new-video-title"><i class="fa fa-bolt"></i>آخرین ویدیو ها</h1>
 <div class="row">
 
