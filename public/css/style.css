@@ -1454,6 +1454,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 	margin-top: 20px;
 	margin-left: 10px;
 	margin-bottom: 10px;
+	padding: 10px;
 	}	
 .log-in-form   .bg-facebook{
 	background-color: #2f5b9d;

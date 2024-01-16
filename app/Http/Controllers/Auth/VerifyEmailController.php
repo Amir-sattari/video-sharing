@@ -23,6 +23,6 @@ class VerifyEmailController extends Controller
             event(new Verified($request->user()));
         }
 
-        return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
+        return redirect()->route('home.index')->with('success','ایمیل شما با موفقیت تایید شد');
     }
 }

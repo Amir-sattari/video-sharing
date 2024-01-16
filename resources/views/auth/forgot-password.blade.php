@@ -1,25 +1,24 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('videos.auth-layout')
+@section('content')
+
+<div id="log-in" class="site-form log-in-form">
+
+    <div id="log-in-head">
+        <h1>بازیابی رمز عبور</h1>
+        <div id="logo"><a href="{{ route('home.index') }}"><img src="/img/logo.png" alt=""></a></div>
     </div>
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form method="POST" action="{{ route('password.email') }}">
+    <div class="form-output">
+        @include('errors.message')
+        <form action="{{ route('password.email') }}" method="POST">
         @csrf
+            <div class="form-group; label-floating">
+                <label class="control-label">ایمیل</label>
+                <input name="email" type="email" class="form-control" placeholder="">
+            </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+            <button type="submit" class="btn btn-lg btn-primary full-width">ارسال ایمیل بازیابی</button>
+        </form>
+    </div>
+</div>
+@endsection

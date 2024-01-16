@@ -56,7 +56,3 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// Route::get('event',function(){
-//     $video = Video::first();
-//     VideoCreated::dispatch($video);
-// });
