@@ -33,6 +33,11 @@ class Video extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->orderBy('created_at','desc');
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -57,7 +62,7 @@ class Video extends Model
 
     public function getCategoryNameAttribute()
     {
-        return $this->category?->name;
+        return $this->category->name;
     }
 
     public function getOwnerNameAttribute()

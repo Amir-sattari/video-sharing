@@ -48,6 +48,7 @@ class VideoController extends Controller
 
     public function show(Video $video)
     {
+        $video->load('comments.user');
         $relatedVideos = Video::all()->random(8);
         return view('videos.show',compact('video','relatedVideos'));
     }

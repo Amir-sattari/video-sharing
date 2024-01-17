@@ -13,6 +13,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryVideoController;
+use App\Http\Controllers\CommentController;
 use App\Http\Middleware\CheckVerifyEmail;
 use App\Models\Video;
 
@@ -38,6 +39,10 @@ Route::prefix('')->group(function(){
     Route::put('video/{video}',[VideoController::class, 'update'])->name('video.update');
 
     Route::get('categories/{category:slug}/videos',[CategoryVideoController::class, 'index'])->name('categories.videos.index');
+
+    Route::post('videos/{video}/comments',[CommentController::class, 'store'])
+        ->middleware('auth')
+        ->name('comments.store');
 });
 
 // Route::get('/', function () {
@@ -55,4 +60,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
 

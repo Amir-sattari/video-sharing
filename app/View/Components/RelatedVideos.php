@@ -16,7 +16,7 @@ class RelatedVideos extends Component
     public function __construct($video)
     {
         $video = Video::query()->findOrFail($video);
-        $this->videos = $video->relatedVideos(); 
+        $this->videos = $video->relatedVideos()->load(['user','category']); 
     }
 
     /**
