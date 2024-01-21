@@ -1,21 +1,23 @@
 <?php
 
-use App\Events\VideoCreated;
 use App\Jobs\OTP;
 use App\Models\User;
+use App\Models\Video;
 use App\Mail\VerifyEmail;
 use App\Jobs\ProcessVideo;
+use App\Events\VideoCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\VideoController;
+use App\Http\Middleware\CheckVerifyEmail;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DislikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryVideoController;
-use App\Http\Controllers\CommentController;
-use App\Http\Middleware\CheckVerifyEmail;
-use App\Models\Video;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,9 @@ Route::prefix('')->group(function(){
     Route::post('videos/{video}/comments',[CommentController::class, 'store'])
         ->middleware('auth')
         ->name('comments.store');
+
+    Route::get('{likeable_type}/{likeable_id}/like',[LikeController::class, 'store'])->name('likes.store');
+    Route::get('{likeable_type}/{likeable_id}/dislike',[DislikeController::class, 'store'])->name('dislikes.store');
 });
 
 // Route::get('/', function () {
