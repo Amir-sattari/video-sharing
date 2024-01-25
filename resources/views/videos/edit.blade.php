@@ -22,10 +22,6 @@
                             <input type="text" name="slug" class="form-control" value="{{ old('slug',$video->slug) }}" placeholder="برچسب ها">
                         </div>
                         <div class="col-md-6">
-                            <label>مدت زمان</label>
-                            <input type="text" name="length" class="form-control" value="{{ old('length',$video->length) }}" placeholder="مدن زمان">
-                        </div>
-                        <div class="col-md-6">
                             <label>دسته بندی</label>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -34,12 +30,8 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label>تصویر</label>
-                            <input id="featured_image" name="thumbnail" type="file" class="form-control" value="{{ $video->thumbnail }}">
-                        </div>
-                        <div class="col-md-6">
                             <label>آپلود فیلم</label>
-                            <input id="upload_file" name="url" type="file" class="form-control" value="{{ $video->url }}">
+                            <input id="upload_file" name="file" type="file" class="form-control" value="{{ $video->video_url }}">
                         </div>
                         <div class="col-md-12">
                             <label>توضیحات</label>
@@ -53,7 +45,7 @@
             </div><!-- // col-md-8 -->
 
             <div class="col-md-4">
-                <a href="#"><img src="{{ $video->thumbnail }}" alt=""></a>
+                <a href="#"><img src="{{ $video->video_thumbnail }}" alt=""></a>
             </div><!-- // col-md-8 -->
             <!-- // upload -->
         </div><!-- // row -->

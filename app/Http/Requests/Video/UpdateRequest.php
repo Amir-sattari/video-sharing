@@ -13,7 +13,7 @@ class UpdateRequest extends StoreRequest
     {
         return array_merge(Parent::rules(),[
             'slug' => ['required', Rule::unique('videos')->ignore($this->video),'alpha_dash:ascii'],
-    
+            'file' => 'file|mimetypes:video/mp4|nullable',    
         ]);
     }
 

@@ -26,10 +26,8 @@ class StoreRequest extends FormRequest
             'name' => 'required|min:3|max:128',
             'category_id' => 'required|exists:categories,id',
             'slug' => 'required|unique:videos,slug|alpha_dash:ascii',
-            'url' => 'required|',
+            'file' => 'required|file|mimetypes:video/mp4',
             'description' => 'nullable|min:10',
-            'thumbnail' => 'required|image|mimes:png,jpg,jpeg',
-            'length' => 'required|numeric',
         ];
     }
 

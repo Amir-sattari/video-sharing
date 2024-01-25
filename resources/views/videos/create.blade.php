@@ -21,10 +21,6 @@
                             <input type="text" name="slug" class="form-control" value="{{old('slug')}}" placeholder="برچسب ها">
                         </div>
                         <div class="col-md-6">
-                            <label>مدت زمان</label>
-                            <input type="text" name="length" class="form-control" value="{{old('length')}}" placeholder="مدن زمان">
-                        </div>
-                        <div class="col-md-6">
                             <label>دسته بندی</label>
                             <select class="form-control" name="category_id">
                                 @foreach($categories as $category)
@@ -33,12 +29,8 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label>تصویر</label>
-                            <input id="featured_image" name="thumbnail" type="file" class="form-control">
-                        </div>
-                        <div class="col-md-6">
                             <label>آپلود فیلم</label>
-                            <input id="upload_file" name="url" type="file" class="form-control">
+                            <input id="upload_file" name="file" type="file" class="form-control">
                         </div>
                         <div class="col-md-12">
                             <label>توضیحات</label>

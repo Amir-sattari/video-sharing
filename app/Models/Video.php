@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Traits\likeable;
+use App\Filters\VideoFilters;
 use Hekmatinasser\Verta\Verta;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Traits\likeable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Video extends Model
 {
@@ -16,7 +18,7 @@ class Video extends Model
         'name',
         'category_id',
         'slug',
-        'url',
+        'path',
         'description',
         'thumbnail',
         'length',
@@ -74,5 +76,22 @@ class Video extends Model
     public function getOwnerAvatarAttribute()
     {
         return $this->user?->gravatar;
+    }
+
+    public function getVideoUrlAttribute()
+    {
+        return '/storage/' . $this->path;
+    }
+
+    public function getVideoThumbnailAttribute()
+    {
+        return '/storage/' . $this->thumbnail;
+    }
+
+    # Scopes
+
+    public function scopeFilters(Builder $builder, array $params)
+    {
+        return (new VideoFilters($builder))->apply($params);
     }
 }
