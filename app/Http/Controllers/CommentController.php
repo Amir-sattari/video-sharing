@@ -11,6 +11,7 @@ class CommentController extends Controller
 {
     public function store(StoreRequest $request,Video $video)
     {
+        // $this->authorize('create',[Comment::class,$video]);
         try {
 
             $createdComment = $video->comments()->create([

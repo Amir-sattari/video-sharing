@@ -22,6 +22,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryVideoController;
 use App\Services\FFMpegAdapter;
 use FFMpeg\FFMpeg;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Gate;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,4 +72,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('cache',function(){
+    $value = Cache::remember('videos_count',10,function(){
+        sleep(3);
+        return Video::all()->count();
+    });
 
+    dump($value);
+});
+
+Route::get('make',function(){
+    $video = Video::find(476);
+
+});
