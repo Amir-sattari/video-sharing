@@ -15,6 +15,7 @@ class VideoFilters
     {
         foreach ($params as $methodName => $value)
         {
+            if(!method_exists($this,$methodName)) continue;
             if(is_null($value)) continue;
             $this->$methodName($value);
         }

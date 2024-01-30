@@ -8,11 +8,12 @@ use App\Models\Traits\likeable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Video extends Model
 {
     protected $perPage = 18;
-    use HasFactory, likeable;
+    use HasFactory, likeable, SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -23,6 +24,7 @@ class Video extends Model
         'thumbnail',
         'length',
     ];
+
 
     # Relationships
 
